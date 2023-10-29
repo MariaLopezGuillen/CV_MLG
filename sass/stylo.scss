@@ -1,0 +1,123 @@
+
+// Definición de variables para los puntos de interrupción
+$breakpoints: (
+  'small': 576px,
+  'medium': 768px,
+  'large': 992px,
+  'xlarge': 1200px
+);
+
+// Mixin para los media queries
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn 'No se encontró el punto de interrupción #{$breakpoint}.';
+  } 
+}
+
+// Variables
+$subtitle-color: darkblue;
+$subtitle-size: 18px;
+
+body{
+  background-color: #999;
+  padding: 0;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.perfil{
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin:5%;
+}
+
+.foto{
+  width: 150px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitulo {
+  font-size: $subtitle-size;
+  font-weight: normal;
+  margin-top: 5px;
+  color: $subtitle-color;
+}
+
+.footer {
+  background-color: #3b3b3b;
+  padding: 20px;
+}
+
+.categoria {
+  margin-bottom: 20px;
+}
+
+.titulo {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+}
+
+.footerletra {
+  margin-bottom: 5px;
+}
+
+.footerletra a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.footerletra a:hover {
+  color: #1b5b97c7;
+  motion: reverse;
+}
+
+h3 {
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.footext{
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+  margin-top: 20px
+}
+
+.izq{
+  flex: 1;
+  padding-right: 20px;
+  margin: 3%;
+
+  @include respond-to('medium') {
+    flex: 50%;
+  }
+}
+
+.drcha{
+  flex: 100%;
+  padding-left: 750px;
+  flex-wrap: wrap;
+
+  @include respond-to('medium') {
+    flex: 50%;
+  }
+}
